@@ -29,6 +29,7 @@ export const CAUSE_AREAS = [
   "Community Events",
   "Environment",
   "Food & Hunger",
+  "Housing & Homelessness",
   "Hospitals & Health",
   "Libraries",
   "Seniors",

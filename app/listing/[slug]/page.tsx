@@ -112,7 +112,7 @@ export default async function ListingPage({
         </div>
 
         <p className="mt-6 text-xs text-stone-400">
-          Last verified by the organization on {formatVerifiedDate(listing.last_verified_at)}.
+          Last verified on {formatVerifiedDate(listing.last_verified_at)}.
           Something out of date?{" "}
           <a
             href={`mailto:hello@njvolunteens.org?subject=Listing issue: ${encodeURIComponent(listing.org_name)}`}
