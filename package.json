@@ -9,7 +9,8 @@
     "lint": "eslint",
     "seed": "node scripts/seed.mjs",
     "seed:essex": "node scripts/seed-essex-county.mjs",
-    "seed:statewide": "node scripts/seed-statewide.mjs"
+    "seed:statewide": "node scripts/seed-statewide.mjs",
+    "seed:statewide2": "node scripts/seed-statewide-2.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",
