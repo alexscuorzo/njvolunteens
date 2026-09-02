@@ -13,7 +13,8 @@
     "seed:statewide2": "node scripts/seed-statewide-2.mjs",
     "seed:statewide3": "node scripts/seed-statewide-3.mjs",
     "seed:statewide4": "node scripts/seed-statewide-4.mjs",
-    "seed:hospitals": "node scripts/seed-hospitals.mjs"
+    "seed:hospitals": "node scripts/seed-hospitals.mjs",
+    "seed:statewide5": "node scripts/seed-statewide-5.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",
