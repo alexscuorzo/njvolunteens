@@ -11,7 +11,8 @@
     "seed:essex": "node scripts/seed-essex-county.mjs",
     "seed:statewide": "node scripts/seed-statewide.mjs",
     "seed:statewide2": "node scripts/seed-statewide-2.mjs",
-    "seed:statewide3": "node scripts/seed-statewide-3.mjs"
+    "seed:statewide3": "node scripts/seed-statewide-3.mjs",
+    "seed:statewide4": "node scripts/seed-statewide-4.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",

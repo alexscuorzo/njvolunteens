@@ -101,12 +101,14 @@ export default async function ListingPage({
           )}
           <div className="mt-3 text-sm text-stone-600 space-y-1">
             {listing.contact_name && <p>Contact: {listing.contact_name}</p>}
-            <p>
-              Email:{" "}
-              <a href={`mailto:${listing.contact_email}`} className="text-emerald-700 hover:underline">
-                {listing.contact_email}
-              </a>
-            </p>
+            {listing.contact_email && (
+              <p>
+                Email:{" "}
+                <a href={`mailto:${listing.contact_email}`} className="text-emerald-700 hover:underline">
+                  {listing.contact_email}
+                </a>
+              </p>
+            )}
             {listing.contact_phone && <p>Phone: {listing.contact_phone}</p>}
           </div>
         </div>
