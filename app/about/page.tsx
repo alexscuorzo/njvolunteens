@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Headshot from "@/components/Headshot";
 
 export const metadata: Metadata = {
   title: "About",
@@ -15,6 +16,18 @@ export default function AboutPage() {
       </h1>
 
       <div className="mt-6 bg-white border border-stone-200 rounded-xl p-6 sm:p-8">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 mb-6 pb-6 border-b border-stone-100">
+          <Headshot />
+          <div className="text-center sm:text-left">
+            <p className="font-semibold text-stone-900">
+              Built by a New Jersey high school student
+            </p>
+            <p className="mt-1 text-sm text-stone-600">
+              For other New Jersey high school students.
+            </p>
+          </div>
+        </div>
+
         <div className="space-y-5 text-stone-700 leading-relaxed">
           <p className="text-lg text-stone-800">
             Service matters to me. I&apos;ve been in the same boat as thousands
