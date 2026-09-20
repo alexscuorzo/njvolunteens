@@ -42,6 +42,9 @@ export default function RootLayout({
               <Link href="/browse" className="hover:text-emerald-700">
                 Browse
               </Link>
+              <Link href="/about" className="hover:text-emerald-700 hidden sm:block">
+                About
+              </Link>
               <Link href="/resources" className="hover:text-emerald-700 hidden sm:block">
                 Hour Verification
               </Link>
@@ -58,6 +61,9 @@ export default function RootLayout({
         <footer className="border-t border-stone-200 bg-white">
           <div className="max-w-5xl mx-auto px-4 py-6 text-sm text-stone-500 flex flex-col sm:flex-row gap-2 sm:gap-6">
             <span>NJVolunteens.org — connecting NJ teens with ways to help.</span>
+            <Link href="/about" className="hover:text-emerald-700">
+              About
+            </Link>
             <Link href="/resources" className="hover:text-emerald-700">
               How service hours work
             </Link>
