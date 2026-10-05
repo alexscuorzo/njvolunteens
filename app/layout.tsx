@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { CANONICAL_SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,7 +14,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE = CANONICAL_SITE_URL;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE),
+  // Google Search Console verification. Set GOOGLE_SITE_VERIFICATION in
+  // Netlify to the content value Search Console gives you; the meta tag is
+  // omitted entirely when it is unset.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
   title: {
     default: "NJ VolunTeens — Volunteer opportunities for NJ high school students",
     template: "%s | NJ VolunTeens",
