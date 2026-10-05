@@ -6,9 +6,67 @@ import ListingCard from "@/components/ListingCard";
 import { getApprovedListings, isDbConfigured } from "@/lib/listings";
 import type { Listing } from "@/lib/types";
 
-export const metadata: Metadata = {
-  title: "Browse opportunities",
-};
+import { NJ_COUNTIES, CAUSE_AREAS, CANONICAL_SITE_URL } from "@/lib/constants";
+
+/**
+ * Each county and cause view is a distinct search landing page — someone
+ * googling "volunteer opportunities Monmouth County NJ" should find one.
+ * Without per-filter titles all 33 of these look like the same page to
+ * Google and only one gets indexed.
+ */
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const raw = (k: string) =>
+    typeof params[k] === "string" ? (params[k] as string) : undefined;
+
+  // Only trust values that match our own lists, so arbitrary query strings
+  // can't inject text into the page title.
+  const countyParam = raw("county");
+  const causeParam = raw("cause");
+  const county = (NJ_COUNTIES as readonly string[]).includes(countyParam ?? "")
+    ? countyParam
+    : undefined;
+  const cause = (CAUSE_AREAS as readonly string[]).includes(causeParam ?? "")
+    ? causeParam
+    : undefined;
+
+  let title: string;
+  let description: string;
+
+  if (county && cause) {
+    title = `${cause} volunteer opportunities in ${county} County, NJ`;
+    description = `${cause} volunteer opportunities for high school students in ${county} County, New Jersey. Every listing shows the minimum age and whether the hours count toward school service requirements.`;
+  } else if (county) {
+    title = `Volunteer opportunities in ${county} County, NJ`;
+    description = `Volunteer opportunities for high school students in ${county} County, New Jersey. Filter by cause and age, and see which listings count toward school service hour requirements.`;
+  } else if (cause) {
+    title = `${cause} volunteer opportunities for NJ high school students`;
+    description = `${cause} volunteer opportunities for teens across New Jersey. Every listing shows the minimum age and whether the hours count toward school service requirements.`;
+  } else {
+    title = "Browse volunteer opportunities in New Jersey";
+    description =
+      "Search volunteer opportunities for New Jersey high school students by county, cause, and age — and see which ones count toward school service hours.";
+  }
+
+  // Point every filtered view at a single canonical form so param order or
+  // extra filters don't read as duplicate pages.
+  const canonicalParams = new URLSearchParams();
+  if (county) canonicalParams.set("county", county);
+  if (cause) canonicalParams.set("cause", cause);
+  const qs = canonicalParams.toString();
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `${CANONICAL_SITE_URL}/browse${qs ? `?${qs}` : ""}`,
+    },
+  };
+}
 
 export default async function BrowsePage({
   searchParams,
