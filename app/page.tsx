@@ -16,15 +16,22 @@ export default function HomePage() {
           aria-hidden="true"
           className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
+        {/* Light green tint for brand colour, kept weak so the photo reads. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-emerald-900/80 sm:bg-gradient-to-r sm:from-emerald-950/90 sm:via-emerald-900/80 sm:to-emerald-800/60"
+          className="absolute inset-0 -z-10 bg-emerald-900/40"
+        />
+        {/* Darkening only where the text sits, so contrast survives without
+            flattening the whole image. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-emerald-950/70 via-emerald-950/40 to-transparent sm:bg-gradient-to-r sm:from-emerald-950/80 sm:via-emerald-950/40 sm:to-transparent"
         />
         <div className="relative max-w-5xl mx-auto px-4 py-14 sm:py-20">
-          <h1 className="text-3xl sm:text-5xl font-bold max-w-2xl leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold max-w-2xl leading-tight [text-shadow:0_2px_16px_rgb(0_0_0_/_0.45)]">
             Volunteer opportunities for NJ high school students
           </h1>
-          <p className="mt-4 text-emerald-50 text-lg max-w-xl">
+          <p className="mt-4 text-white text-lg max-w-xl [text-shadow:0_1px_10px_rgb(0_0_0_/_0.5)]">
             Find organizations near you that need help — and know up front
             whether the hours count toward your school&apos;s service requirement.
           </p>
@@ -37,7 +44,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/list-your-organization"
-              className="border border-emerald-300 text-white font-semibold px-6 py-3 rounded-lg text-center hover:bg-emerald-600"
+              className="border border-white/70 bg-emerald-950/30 backdrop-blur-sm text-white font-semibold px-6 py-3 rounded-lg text-center hover:bg-emerald-950/50"
             >
               List your organization — free
             </Link>
