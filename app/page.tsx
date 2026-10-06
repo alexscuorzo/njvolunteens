@@ -4,12 +4,27 @@ import { NJ_COUNTIES, CAUSE_AREAS } from "@/lib/constants";
 export default function HomePage() {
   return (
     <div>
-      <section className="bg-emerald-700 text-white">
-        <div className="max-w-5xl mx-auto px-4 py-14 sm:py-20">
+      <section className="relative isolate bg-emerald-800 text-white overflow-hidden">
+        {/*
+          Photo sits behind the hero. It is a bright image, so the green wash
+          and the left-to-right darkening are what keep the white headline
+          readable — without them the text disappears into the sky.
+        */}
+        <img
+          src="/hero.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-emerald-900/80 sm:bg-gradient-to-r sm:from-emerald-950/90 sm:via-emerald-900/80 sm:to-emerald-800/60"
+        />
+        <div className="relative max-w-5xl mx-auto px-4 py-14 sm:py-20">
           <h1 className="text-3xl sm:text-5xl font-bold max-w-2xl leading-tight">
             Volunteer opportunities for NJ high school students
           </h1>
-          <p className="mt-4 text-emerald-100 text-lg max-w-xl">
+          <p className="mt-4 text-emerald-50 text-lg max-w-xl">
             Find organizations near you that need help — and know up front
             whether the hours count toward your school&apos;s service requirement.
           </p>
